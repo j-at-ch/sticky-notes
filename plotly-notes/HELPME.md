@@ -17,3 +17,11 @@ fig = px.density_heatmap(
 )
 fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 ```
+
+### Don't share x axis in row facet.
+```python
+fig = px.scatter(
+    df, x='x', y='y', facet_row='facet'
+)
+fig.update_xaxes(matches=None)
+```
