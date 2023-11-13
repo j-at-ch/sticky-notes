@@ -17,4 +17,9 @@ Once correctly configured, tests should be runable via
 discovering all nested tests provided that standard naming
 conventions have been followed.
 
-### 
+###Adding packages to a conda env's `PATH`.
+
+I found [this resource](https://towardsdatascience.com/python-and-the-module-search-path-e71ae7a7e65f), which
+points out that local package paths can be added via adding `.pth` files to the `site-packages` dir as 
+`package_name.pth`, containing the path to that package. This works, but, e.g. some non PyPI packages that 
+I've seen seem to be added to the path automatically. I'm not sure why this is.
