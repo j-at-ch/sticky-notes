@@ -1,10 +1,6 @@
 # python-package-notes
 
 ### Testing via `pytest`
-Resources:
-+ Good testing integration practices: [pytest](https://pytest.org/en/7.4.x/explanation/goodpractices.html)
-+ A blog with extra tips: [here](https://blog.ionelmc.ro/2014/05/25/python-packaging/#the-structure%3E)
-
 My experiences:
 + If there is a ModuleNotFoundError for the source code,
 then test whether it works using `python -m pytest tests`.
@@ -28,6 +24,7 @@ I've seen seem to be added to the path automatically. I'm not sure why this is.
 
 kedro suggests [this](https://docs.kedro.org/en/stable/kedro_project_setup/starters.html):
 
+```
 project-template    # Project folder
 ├── conf            # Configuration files
 ├── data            # Local project data
@@ -37,6 +34,17 @@ project-template    # Project folder
 ├── pyproject.toml  # Project metadata and linter configuration
 ├── README.md       # README.md explaining your project
 └── src             # Source code for pipelines
+```
 
 `pytest` suggests a slight divergence from this with `tests` outside of `src` rather than within. 
+
+### Resources:
+
++ `pytest` good integration practices. [Here.](https://pytest.org/en/7.4.x/explanation/goodpractices.html)
++ A useful data science template from kedro. [Here.](https://docs.kedro.org/en/stable/get_started/kedro_concepts.html#kedro-project-directory-structure)
++ Configuring a `setuptools` build via `pyproject.toml`. [Here.](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)
++ Loading `dotenv` without altering environ. [Here.](https://pypi.org/project/python-dotenv/)
++ Pytest modifying traceback. [Here.](https://docs.pytest.org/en/7.1.x/how-to/output.html)
+  + Recommend `pytest -tb=no` as a starting point.
++ A blog post on testing python packages. [Here.](https://hynek.me/articles/testing-packaging/) 
 
