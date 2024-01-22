@@ -1,4 +1,4 @@
-# Sklearn notes
+# sklearn-notes
 
 ### GridsearchCV with XGBoost early stopping
 
