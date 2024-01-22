@@ -25,3 +25,33 @@ fig = px.scatter(
 )
 fig.update_xaxes(matches=None)
 ```
+
+### Add opacity to line.
+```python
+# helper function
+def hex_to_rgba(
+    h: str,
+    alpha: float
+) -> str:
+    """Convert colour value in hex format to rgba with alpha.
+
+    :param h: Colour hex value.
+    :param alpha: Colour alpha parameter.
+    :return: RGBA string presentation of the colour.
+    """
+    rgb = [int(h.lstrip('#')[i:i+2], 16) for i in (0, 2, 4)]
+    return 'rgba' + str(tuple(rgb + [alpha]))
+
+# plotting code
+fig = px.line(
+    df, x='x', y='y'
+)
+fig.update_traces(line_color=hex_to_rgba('#636EFA', 0.5))
+```
+
+### Add markers to a `px.line` plot.
+```python
+fig = px.line(
+    df, x='x', y='y', markers=True
+)
+```
