@@ -55,3 +55,47 @@ fig = px.line(
     df, x='x', y='y', markers=True
 )
 ```
+
+### Use Plotly discrete colours.
+```python
+plotly_colors = px.colors.qualitative.Plotly  # a list of Plotly color scheme hex codes
+d3_colors = px.colors.qualitative.D3  # a list of D3 color scheme hex codes
+```
+
+### Make subplots and add `px`-style traces using `add_traces`.
+```python
+from plotly.subplots import make_subplots
+
+fig = make_subplots(
+    rows=2,
+    cols=1,
+    subplot_titles=['Subtitle 1', 'Subtitle 2'],
+    row_heights=[0.5, 0.5],
+    shared_xaxes=True
+)
+
+fig.add_traces(
+    px.scatter(df, x='x', y='y').data,
+    rows=1, 
+    cols=1
+)
+
+fig.add_traces(
+    px.scatter(df, x='x', y='y').data,
+    rows=2, 
+    cols=1
+)
+```
+
+### Add hover data to a px plot.
+```python
+px.scatter(
+    df, x='x', y='y', hover_data=['col-name']
+)
+```
+
+### Add hover reference x-axis dropdown lines.
+```python
+# make your fig
+fig.update_xaxes(showspikes=True)
+```
