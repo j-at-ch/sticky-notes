@@ -99,3 +99,23 @@ px.scatter(
 # make your fig
 fig.update_xaxes(showspikes=True)
 ```
+
+
+### Add legend groups to subplots.
+Note that this is only effective when both legend types are discrete. Issues arise when mixing 
+discrete and continuous.
+If you want to hide all grouped traces on a single click, remove the `update_layout` "groupclick" option. 
+
+```python
+fig.update_traces(
+    {'legendgroup': 'group1', 'legendgrouptitle_text':"First Group Title"}, 
+    row=1, col=1
+)
+
+fig.update_traces(
+    {'legendgroup': 'group2', 'legendgrouptitle_text':"Second Group Title"}, 
+    row=2, col=1
+)
+
+fig.update_layout(legend=dict(groupclick="toggleitem"))
+```
