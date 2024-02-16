@@ -47,3 +47,11 @@ previous values into a cell using `group_by_dynamic`.
     )
 )
 ```
+
+### Summarise a newly created column
+
+```python
+df.with_columns(
+    (pl.col('x') - pl.col('z')).abs().alias('a')
+).select('a').mean()
+```
