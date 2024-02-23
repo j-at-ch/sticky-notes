@@ -119,3 +119,59 @@ fig.update_traces(
 
 fig.update_layout(legend=dict(groupclick="toggleitem"))
 ```
+
+
+### Render large numbers of points in px.scatter without binning.
+If the dataframe has more than 1000 points, then the scatter x axes may be binned when using
+the "webgl" renderer. To avoid this, switch renderer to "svg".
+
+```python
+px.scatter(df, x='x', y='y', render_mode='svg')
+```
+
+### Plot heatmap type data and scatter type data in one figure.
+
+```python
+import numpy as np
+import pandas as pd
+import plotly.express as px
+
+from plotly.subplots import make_subplots
+
+timestamps = pd.date_range('2024-01-01 10:00', '2024-01-01 11:00', freq='s')
+values_srs = np.random.rand(len(timestamps))
+values_mtx = np.random.rand(len(timestamps), 10)
+
+df = pd.DataFrame({'t': timestamps, 'v': values_srs})
+
+fig = make_subplots(
+    rows=2,
+    cols=1,
+    subplot_titles=['Matrix Heatmap', 'Series Scatter'],
+    shared_xaxes=True
+)
+
+fig.add_traces(
+    px.imshow(
+        values_mtx.T,
+        x=df.t
+    ).data,
+    rows=1, cols=1
+)
+
+fig.add_traces(
+    px.scatter(
+        df,
+        x='t',
+        y='v',
+        opacity=0.5,
+        render_mode='svg'
+    ).data,
+    rows=2, cols=1
+)
+
+fig.show()
+```
+
+
+
