@@ -173,5 +173,26 @@ fig.add_traces(
 fig.show()
 ```
 
+### Show built-in discrete color sequences.
+
+```python
+fig = px.colors.qualitative.swatches()
+fig.show()
+```
+
+### Style markers with different symbols in `px.scatter`.
+
+```python
+fig = px.scatter(data, x='x', y='y', symbol_sequence=['x'])
+fig.show()
+```
+
+To see a list of symbol names you can do:
+```python
+from plotly.validators.scatter.marker import SymbolValidator
+print(SymbolValidator().values)
+```
+
+At time of writing, this is visualised in the docs [here](https://plotly.com/python/marker-style/).
 
 
