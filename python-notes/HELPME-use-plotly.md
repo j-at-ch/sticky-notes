@@ -196,3 +196,20 @@ print(SymbolValidator().values)
 At time of writing, this is visualised in the docs [here](https://plotly.com/python/marker-style/).
 
 
+### Add an "abline" to a pre-built figure. 
+
+```python
+def add_abline(a: float, b: float, fig: go.Figure, inplace=False) -> go.Figure:
+    x0, x1 = fig.full_figure_for_development(warn=False).layout.xaxis.range
+    fig_out = px.line(
+        x=[x0, x1],
+        y=[a + b * x0, a + b * x1]
+    )
+    if inplace:
+        fig_out = fig.add_traces(
+            fig_out.data
+        )
+    return fig_out
+```
+
+
