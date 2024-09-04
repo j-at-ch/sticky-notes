@@ -10,6 +10,8 @@ fig = px.density_heatmap(
 )
 ```
 
+
+
 ### Remove variable name from facet.
 ```python
 fig = px.density_heatmap(
@@ -18,6 +20,8 @@ fig = px.density_heatmap(
 fig.for_each_annotation(lambda a: a.update(text=a.text.split("=")[-1]))
 ```
 
+
+
 ### Don't share x axis in row facet.
 ```python
 fig = px.scatter(
@@ -25,6 +29,8 @@ fig = px.scatter(
 )
 fig.update_xaxes(matches=None)
 ```
+
+
 
 ### Add opacity to line.
 ```python
@@ -49,6 +55,8 @@ fig = px.line(
 fig.update_traces(line_color=hex_to_rgba('#636EFA', 0.5))
 ```
 
+
+
 ### Add markers to a `px.line` plot.
 ```python
 fig = px.line(
@@ -56,11 +64,15 @@ fig = px.line(
 )
 ```
 
+
+
 ### Use Plotly discrete colours.
 ```python
 plotly_colors = px.colors.qualitative.Plotly  # a list of Plotly color scheme hex codes
 d3_colors = px.colors.qualitative.D3  # a list of D3 color scheme hex codes
 ```
+
+
 
 ### Make subplots and add `px`-style traces using `add_traces`.
 ```python
@@ -87,6 +99,8 @@ fig.add_traces(
 )
 ```
 
+
+
 ### Add hover data to a px plot.
 ```python
 px.scatter(
@@ -94,11 +108,14 @@ px.scatter(
 )
 ```
 
+
+
 ### Add hover reference x-axis dropdown lines.
 ```python
 # make your fig
 fig.update_xaxes(showspikes=True)
 ```
+
 
 
 ### Add legend groups to subplots.
@@ -121,6 +138,7 @@ fig.update_layout(legend=dict(groupclick="toggleitem"))
 ```
 
 
+
 ### Render large numbers of points in px.scatter without binning.
 If the dataframe has more than 1000 points, then the scatter x axes may be binned when using
 the "webgl" renderer. To avoid this, switch renderer to "svg".
@@ -128,6 +146,8 @@ the "webgl" renderer. To avoid this, switch renderer to "svg".
 ```python
 px.scatter(df, x='x', y='y', render_mode='svg')
 ```
+
+
 
 ### Plot heatmap type data and scatter type data in one figure.
 
@@ -173,12 +193,16 @@ fig.add_traces(
 fig.show()
 ```
 
+
+
 ### Show built-in discrete color sequences.
 
 ```python
 fig = px.colors.qualitative.swatches()
 fig.show()
 ```
+
+
 
 ### Style markers with different symbols in `px.scatter`.
 
@@ -194,6 +218,7 @@ print(SymbolValidator().values)
 ```
 
 At time of writing, this is visualised in the docs [here](https://plotly.com/python/marker-style/).
+
 
 
 ### Add an "abline" to a pre-built figure. 
@@ -213,3 +238,10 @@ def add_abline(a: float, b: float, fig: go.Figure, inplace=False) -> go.Figure:
 ```
 
 
+
+### Set a specific bin width for a px.histogram
+
+```python
+fig = px.histogram(df, x='x')
+fig.update_traces(xbins_size=24)
+```
